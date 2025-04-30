@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Taller Mecánico Chile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-['Roboto'] min-h-screen flex flex-col">
+    <header class="bg-blue-700 text-white p-4 shadow">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">Taller Mecánico Chile</h1>
+            <nav>
+                <a href="{% url 'vehicle_list' %}" class="px-3 py-2 hover:bg-blue-600 rounded">Vehículos</a>
+                <a href="{% url 'vehicle_create' %}" class="px-3 py-2 hover:bg-blue-600 rounded">Nuevo Vehículo</a>
+                <a href="{% url 'repair_create' %}" class="px-3 py-2 hover:bg-blue-600 rounded">Nueva Reparación</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container mx-auto flex-grow p-4">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="bg-blue-700 text-white p-4 text-center">
+        &copy; 2024 Taller Mecánico Chile
+    </footer>
+</body>
+</html>
