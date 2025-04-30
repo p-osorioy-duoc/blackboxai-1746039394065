@@ -1,0 +1,41 @@
+{% extends "workshop/base.html" %}
+
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Historial de Reparaciones - {{ vehicle.license_plate }}</h2>
+
+<div class="bg-white p-6 rounded shadow max-w-4xl">
+    <h3 class="text-xl font-semibold mb-2">Detalles del Vehículo</h3>
+    <ul class="mb-4">
+        <li><strong>Patente:</strong> {{ vehicle.license_plate }}</li>
+        <li><strong>Marca:</strong> {{ vehicle.brand }}</li>
+        <li><strong>Modelo:</strong> {{ vehicle.model }}</li>
+        <li><strong>Año:</strong> {{ vehicle.year }}</li>
+        <li><strong>Propietario:</strong> {{ vehicle.owner_name }}</li>
+        <li><strong>Teléfono:</strong> {{ vehicle.owner_phone }}</li>
+    </ul>
+
+    <h3 class="text-xl font-semibold mb-2">Reparaciones</h3>
+    {% if repairs %}
+    <table class="min-w-full bg-white rounded shadow">
+        <thead>
+            <tr>
+                <th class="py-2 px-4 border-b">Fecha</th>
+                <th class="py-2 px-4 border-b">Descripción</th>
+                <th class="py-2 px-4 border-b">Costo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for repair in repairs %}
+            <tr class="hover:bg-gray-100">
+                <td class="py-2 px-4 border-b">{{ repair.date }}</td>
+                <td class="py-2 px-4 border-b">{{ repair.description }}</td>
+                <td class="py-2 px-4 border-b">${{ repair.cost }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No hay reparaciones registradas para este vehículo.</p>
+    {% endif %}
+</div>
+{% endblock %}
