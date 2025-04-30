@@ -1,0 +1,30 @@
+{% extends "workshop/base.html" %}
+
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Calendario de Mantenciones Futuras</h2>
+
+{% if future_maintenances %}
+<table class="min-w-full bg-white rounded shadow">
+    <thead>
+        <tr>
+            <th class="py-2 px-4 border-b">Fecha Próxima Mantención</th>
+            <th class="py-2 px-4 border-b">Vehículo</th>
+            <th class="py-2 px-4 border-b">Descripción</th>
+            <th class="py-2 px-4 border-b">Costo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for maintenance in future_maintenances %}
+        <tr class="hover:bg-gray-100">
+            <td class="py-2 px-4 border-b">{{ maintenance.next_maintenance_date }}</td>
+            <td class="py-2 px-4 border-b">{{ maintenance.vehicle.license_plate }}</td>
+            <td class="py-2 px-4 border-b">{{ maintenance.description }}</td>
+            <td class="py-2 px-4 border-b">${{ maintenance.cost }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No hay mantenciones futuras programadas.</p>
+{% endif %}
+{% endblock %}
